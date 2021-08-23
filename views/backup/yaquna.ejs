@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://cdn.sellix.io/static/js/embed.js"></script>
+    <link rel='stylesheet' type='text/css' href='/assets/css/yaqunastyles.css'/>
+    <link rel="icon" href="/assets/img/logo.png">
+    <title>YaqunaAlts</title>
+    <script language="JavaScript">
+		//////////F12 disable code////////////////////////
+          document.onkeypress = function (event) {
+              event = (event || window.event);
+              if (event.keyCode == 123) {
+                 //alert('No F-12');
+                  return false;
+              }
+          }
+          document.onmousedown = function (event) {
+              event = (event || window.event);
+              if (event.keyCode == 123) {
+                  //alert('No F-keys');
+                  return false;
+              }
+          }
+      document.onkeydown = function (event) {
+              event = (event || window.event);
+              if (event.keyCode == 123) {
+                  //alert('No F-keys');
+                  return false;
+              }
+          }
+      var message=":o";      
+      function clickIE() {if (document.all) {(message);return false;}}
+      function clickNS(e) {if
+      (document.layers||(document.getElementById&&!document.all)) {
+      if (e.which==2||e.which==3) {(message);return false;}}}
+      if (document.layers)
+      {document.captureEvents(Event.MOUSEDOWN);document.onmousedown=clickNS;}
+      else{document.onmouseup=clickNS;document.oncontextmenu=clickIE;}
+      document.oncontextmenu=new Function("return false")
+      function disableCtrlKeyCombination(e)
+      {
+      var forbiddenKeys = new Array('a', 'n', 'c', 'x', 'v', 'j' , 'w');
+      var key;
+      var isCtrl;
+      if(window.event)
+      {
+      key = window.event.keyCode;
+      if(window.event.ctrlKey)
+      isCtrl = true;
+      else
+      isCtrl = false;
+      }
+      else
+      {
+      key = e.which;
+      if(e.ctrlKey)
+      isCtrl = true;
+      else
+      isCtrl = false;
+      }
+      if(isCtrl)
+      {
+      for(i=0; i<forbiddenKeys.length; i++)
+      {
+      if(forbiddenKeys[i].toLowerCase() == String.fromCharCode(key).toLowerCase())
+      {
+      alert('Key combination CTRL + '+String.fromCharCode(key) +' has been disabled.');
+      return false;
+      }
+      }
+      }
+      return true;
+      }
+	</script>
+</head>
+
+<body>
+    <section class="hero">
+        <div class="container">
+            <h1> YaqunaAlts </h1>
+            <p> The Best Alt Shop </p>
+            <button class="get-started-btn">Get Started</button>
+            <a href=https://discord.gg/sbxAk5hF6c><button class="discord-btn">Discord</button></a>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container">
+            <h1>About</h1>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-content">
+                        <h2>About YaqunaAlts</h2>
+                        <p> We guarantee the highest quality of the products we sell. In addition, all items we sell are subject to thorough quality control. We strive to offer the highest quality products at the lowest possible Price. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h1>Features</h1>
+            <div class="cards">
+                                    <div class="card">
+                        <div class="card-content">
+                            <h2>Cheap Prices</h2>
+                            <img src=/assets/img/yaquna/money-bag.svg>
+                        </div>
+                    </div>
+                                    <div class="card">
+                        <div class="card-content">
+                            <h2>Instant Delivery</h2>
+                            <img src=/assets/img/yaquna/clock-time.svg>
+                        </div>
+                    </div>
+                                    <div class="card">
+                        <div class="card-content">
+                            <h2>24/7 Support</h2>
+                            <img src=/assets/img/yaquna/support.svg>
+                        </div>
+                    </div>
+                            </div>
+        </div>
+    </section>
+    <section class="pricing">
+        <div class="container">
+            <h1>Pricing</h1>
+            <div class="cards">
+                                    <div class="card">
+                        <div class="card-content">
+                            <h1> Minecraft NFA </h1>
+                            <p> You cannot change anything with this product, non-full access you can only play on it (stats boosting etc) </p>
+                            <a href="Tos.php">Read Our TOS</a>
+                            <button data-sellix-product=606792f8e1418>Starting at 0.50€</button>
+                        </div>
+                    </div>
+                                    <div class="card">
+                        <div class="card-content">
+                            <h1> Minecraft SFA </h1>
+                            <p> You can change the password for this product using a Mail Bomber </p>
+                            <a href="Tos.php">Read Our TOS</a>
+                            <button data-sellix-product=6067b8474730f>Purchase For 1.42€</button>
+                        </div>
+                    </div>
+                                    <div class="card">
+                        <div class="card-content">
+                            <h1> SOON! </h1>
+                            <p> DESC </p>
+                            <a href="Tos.php">Read Our TOS</a>
+                            <button data-sellix-product=API>Purchase For 0.00$</button>
+                        </div>
+                    </div>
+                                    <div class="card">
+                        <div class="card-content">
+                            <h1> SOON! </h1>
+                            <p> DESC </p>
+                            <a href="Tos.php">Read Our TOS</a>
+                            <button data-sellix-product=API>Purchase For 0.00$</button>
+                        </div>
+                    </div>
+                            </div>
+        </div>
+    </section>
+
+    <section class="contact-us">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>Need More Support? Join our <a href=https://discord.gg/sbxAk5hF6c>Discord</a>. Our <a href="impressum.php">Impressum</a>.</p>
+        </div>
+    </section>
+
+    <section class="footer">
+    <div class="container">
+            <p>© YaqunaAlts</p>
+        </div>
+    </section>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+body {
+    background-color: black;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    color: white;
+    font-family: 'Cairo', sans-serif;
+    cursor: url(/assets/js/default.cur), default;
+}
+
+head {
+  cursor: url(/assets/js/default.cur), default;
+}
+
+:hover {
+  cursor: url(/assets/js/default.cur), default;
+}
+
+a {
+  color: red;
+}
+
+a:hover {
+  color: lawngreen;
+}
+
+.logo {
+    margin-top: 3%;
+}
+
+.main {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.index {
+    margin-top: 5%;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 3px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background:blue;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: red;
+  }

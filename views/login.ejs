@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXPLOIT | Login</title>
+    <meta name="google-site-verification" content="cVhq9ZfHrhmrGg9b98xy7u8mVKhpRCEd7H4EGivGIQU" />
+    <meta name="keywords" content="Twitch, Bots, Follower, Follow Bots, Exploit, Shop, Views, View Bot, TikTok, Anime Generator, Hentai Generator"/>
+    <link rel="icon" href="/assets/img/logo.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/login.css">
+    <script language="JavaScript">
+		//////////F12 disable code////////////////////////
+          document.onkeypress = function (event) {
+              event = (event || window.event);
+              if (event.keyCode == 123) {
+                 //alert('No F-12');
+                  return false;
+              }
+          }
+          document.onmousedown = function (event) {
+              event = (event || window.event);
+              if (event.keyCode == 123) {
+                  //alert('No F-keys');
+                  return false;
+              }
+          }
+      document.onkeydown = function (event) {
+              event = (event || window.event);
+              if (event.keyCode == 123) {
+                  //alert('No F-keys');
+                  return false;
+              }
+          }
+      var message=":o";      
+      function clickIE() {if (document.all) {(message);return false;}}
+      function clickNS(e) {if
+      (document.layers||(document.getElementById&&!document.all)) {
+      if (e.which==2||e.which==3) {(message);return false;}}}
+      if (document.layers)
+      {document.captureEvents(Event.MOUSEDOWN);document.onmousedown=clickNS;}
+      else{document.onmouseup=clickNS;document.oncontextmenu=clickIE;}
+      document.oncontextmenu=new Function("return false")
+      function disableCtrlKeyCombination(e)
+      {
+      var forbiddenKeys = new Array('a', 'n', 'c', 'x', 'v', 'j' , 'w');
+      var key;
+      var isCtrl;
+      if(window.event)
+      {
+      key = window.event.keyCode;
+      if(window.event.ctrlKey)
+      isCtrl = true;
+      else
+      isCtrl = false;
+      }
+      else
+      {
+      key = e.which;
+      if(e.ctrlKey)
+      isCtrl = true;
+      else
+      isCtrl = false;
+      }
+      if(isCtrl)
+      {
+      for(i=0; i<forbiddenKeys.length; i++)
+      {
+      if(forbiddenKeys[i].toLowerCase() == String.fromCharCode(key).toLowerCase())
+      {
+      alert('Key combination CTRL + '+String.fromCharCode(key) +' has been disabled.');
+      return false;
+      }
+      }
+      }
+      return true;
+      }
+	</script>
+</head>
+<body>
+    <div class="text-box" id="mainContent">
+        <form action="/users/login" method="POST" class="form">
+            <h1>Login</h1><br>
+            <div class="form-group">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" name="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" id="password" required>
+            </div>
+            <div class="form-enter">
+            <button type="submit" class="btn btn-primary">Submit</button><br><br>
+            Dont have an account? <a href="/users/register">Register</a><br>
+            Join our <a href="/discord">Discord</a>
+            </div>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="/assets/js/three.min.js"></script>
+    <script lang="JavaScript">
+        let scene, camera, renderer, stars, starGeo;
+
+function init() {
+
+  scene = new THREE.Scene();
+
+  camera = new THREE.PerspectiveCamera(60,window.innerWidth / window.innerHeight, 1, 1000);
+  camera.position.z = 1;
+  camera.rotation.x = Math.PI/2;
+
+  renderer = new THREE.WebGLRenderer();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  starGeo = new THREE.Geometry();
+  for(let i=0;i<6000;i++) {
+    star = new THREE.Vector3(
+      Math.random() * 600 - 300,
+      Math.random() * 600 - 300,
+      Math.random() * 600 - 300
+    );
+    star.velocity = 0;
+    star.acceleration = 0.02;
+    starGeo.vertices.push(star);
+  }
+
+  let sprite = new THREE.TextureLoader().load( '/assets/img/star.png' );
+  let starMaterial = new THREE.PointsMaterial({
+    color: 0xaaaaaa,
+    size: 0.7,
+    map: sprite
+  });
+
+  stars = new THREE.Points(starGeo,starMaterial);
+  scene.add(stars);
+
+  window.addEventListener("resize", onWindowResize, false);
+
+  animate(); 
+}
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  }
+function animate() {
+  starGeo.vertices.forEach(p => {
+    p.velocity += p.acceleration
+    p.y -= p.velocity;
+    
+    if (p.y < -200) {
+      p.y = 200;
+      p.velocity = 0;
+    }
+  });
+  starGeo.verticesNeedUpdate = true;
+  stars.rotation.y +=0.002;
+
+  renderer.render(scene, camera);
+  requestAnimationFrame(animate);
+}
+init();
+    </script>
+</body>
+</html>
