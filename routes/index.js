@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const use = require('../models/User');
 const inv = require('../models/Invite')
+const acc = require('../models/accounts')
 const { ensureAuthenticated } = require('../config/auth')
 
 router.get('/', async(req, res) => {
@@ -44,10 +45,12 @@ router.get('/admin', ensureAuthenticated, async(req, res) => {
     } else {
         use.find({}, function(err, users) {
             inv.find({}, function(err, invs) {
-                res.render('admin', {
-
-                    AllUser: users,
-                    Invites: invs
+                acc.find({}, function(err, accs){
+                    res.render('admin', {
+                        AllAccs: accs,
+                        AllUser: users,
+                        Invites: invs
+                    })
                 })
             })
         })

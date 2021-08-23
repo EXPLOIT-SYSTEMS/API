@@ -61,17 +61,21 @@ a:hover {
     margin-right: 15%;
 }
 
+
 #all-invites-section {
     margin-top: 10%;
     margin-left: 15%;
     margin-right: 15%;
+    text-align: center;
 }
+
   
 #member-control-section {
     margin-top: 10%;
     margin-bottom: 20%;
     margin-right: 30%;
     margin-left: 30%;
+    text-align: center;
 }
 
 .scroll-container{

@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 const { v4: uuidv4 } = require('uuid');
 const InviteKeys = require('../models/Invite');
+const AccGen = require('../models/accounts')
 const bcrypt = require('bcryptjs');
 
 router.post('/auth', urlencodedParser, async(req, res) => {
@@ -137,6 +138,13 @@ router.post('/manage_member_entry', urlencodedParser, async(req, res) => {
         res.render('403')
         }
     }
+})
+
+router.get('/get_acc', async(req, res) => {
+    var randomnumber = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
+    AccGen.findOne({accnumber: randomnumber}).then(async gen => {
+        res.json(gen)
+    })
 })
 
 router.get('*', async(req, res) => {
