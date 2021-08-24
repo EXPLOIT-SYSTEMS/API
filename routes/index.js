@@ -22,6 +22,11 @@ router.get('/faq', async(req, res) => {
 })
 
 router.get('/dashboard', ensureAuthenticated, async(req, res) => {
+    var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
+    await use.findOneAndUpdate(
+        { email: req.user.email }, 
+        { ip: ip.toString() }
+    )
     if (req.user.banned === true) {
         req.logout();
         res.redirect('/users/ban');
