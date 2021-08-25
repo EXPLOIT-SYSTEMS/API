@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 const { v4: uuidv4 } = require('uuid');
 const InviteKeys = require('../models/Invite');
+const Licenses = require('../models/licenses')
 const AccGen = require('../models/accounts')
 const bcrypt = require('bcryptjs');
 const rateLimit = require("express-rate-limit");
@@ -70,6 +71,24 @@ router.post('/add_invitekey_admin', urlencodedParser, async(req, res) => {
             //}
         })
 //})
+
+router.post('/buy_uni_license', urlencodedParser, async(req, res) => {
+    const rquser = req.user
+    const currentPoints = req.user.points
+    const newPoints = currentPoints - 50
+    await User.findOneAndUpdate(
+        { email: rquser.email },
+        { points: newPoints }
+    )
+    const key = uuidv4()
+         const newKey = Licenses({
+             program: "Universal",
+             token: key,
+             user: rquser.email
+         })
+         newKey.save()
+         res.redirect('/market#licenses_section')
+})
 
 router.post('/account_delete_request', urlencodedParser, async(req, res) => {
     const rquser = req.user;

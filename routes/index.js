@@ -3,6 +3,7 @@ const router = express.Router();
 const use = require('../models/User');
 const inv = require('../models/Invite')
 const acc = require('../models/accounts')
+const lic = require('../models/licenses')
 const { ensureAuthenticated } = require('../config/auth')
 
 router.get('/', async(req, res) => {
@@ -37,6 +38,16 @@ router.get('/dashboard', ensureAuthenticated, async(req, res) => {
             })
         })
     }
+})
+
+router.get('/market', ensureAuthenticated, async(req, res) => {
+    const rquser = req.user
+    lic.find({user: rquser.email}, function(err, lices) {
+        res.render('market', {
+            User: req.user,
+            Lices: lices
+        })
+    })
 })
 
 router.get('/403', async(req, res) => {

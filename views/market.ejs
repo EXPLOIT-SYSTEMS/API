@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="/assets/js/exploitcore.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/img/logo.png">
+    <title>Admin</title>
+    <meta name="google-site-verification" content="cVhq9ZfHrhmrGg9b98xy7u8mVKhpRCEd7H4EGivGIQU" />
+    <meta name="keywords" content="Twitch, Bots, Follower, Follow Bots, Exploit, Shop, Views, View Bot, TikTok, Anime Generator, Hentai Generator"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/market.css">
+    <script language="JavaScript">
+      //////////F12 disable code////////////////////////
+            document.onkeypress = function (event) {
+                event = (event || window.event);
+                if (event.keyCode == 123) {
+                   //alert('No F-12');
+                    return false;
+                }
+            }
+            document.onmousedown = function (event) {
+                event = (event || window.event);
+                if (event.keyCode == 123) {
+                    //alert('No F-keys');
+                    return false;
+                }
+            }
+        document.onkeydown = function (event) {
+                event = (event || window.event);
+                if (event.keyCode == 123) {
+                    //alert('No F-keys');
+                    return false;
+                }
+            }
+        var message=":o";      
+        function clickIE() {if (document.all) {(message);return false;}}
+        function clickNS(e) {if
+        (document.layers||(document.getElementById&&!document.all)) {
+        if (e.which==2||e.which==3) {(message);return false;}}}
+        if (document.layers)
+        {document.captureEvents(Event.MOUSEDOWN);document.onmousedown=clickNS;}
+        else{document.onmouseup=clickNS;document.oncontextmenu=clickIE;}
+        document.oncontextmenu=new Function("return false")
+        function disableCtrlKeyCombination(e)
+        {
+        var forbiddenKeys = new Array('a', 'n', 'c', 'x', 'v', 'j' , 'w');
+        var key;
+        var isCtrl;
+        if(window.event)
+        {
+        key = window.event.keyCode;
+        if(window.event.ctrlKey)
+        isCtrl = true;
+        else
+        isCtrl = false;
+        }
+        else
+        {
+        key = e.which;
+        if(e.ctrlKey)
+        isCtrl = true;
+        else
+        isCtrl = false;
+        }
+        if(isCtrl)
+        {
+        for(i=0; i<forbiddenKeys.length; i++)
+        {
+        if(forbiddenKeys[i].toLowerCase() == String.fromCharCode(key).toLowerCase())
+        {
+        alert('Key combination CTRL + '+String.fromCharCode(key) +' has been disabled.');
+        return false;
+        }
+        }
+        }
+        return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="logo">
+        <img src="/assets/img/longlogo.png">
+    </div>
+    <strong>
+        Welcome to EXPLOIT-COMMUNTIY!
+    </strong>
+    <section class="main-section">
+        <div class="main">
+            <strong>
+                <label for="main">MARKETPLACE</label><br>
+                <br>
+                Points: <%- User.points %>
+            </strong><br><br>
+            <a href="/dashboard"><button class="btn btn-primary">Dashboard</button></a>
+        </div>
+    </section>
+    <section class="market">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Universial License</h5>
+                    <p class="card-text">
+                        Useable on all our Programms<br>
+                        Price: 50P
+                    </p>
+                    <form action="/api/buy_uni_license" method="POST">
+                        <button type="submit" class="btn btn-primary">BUY</button>
+                    </form>
+                </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Comming Soon</h5>
+                    <p class="card-text">Comming Soon<br>Price</p>
+                    <a href="#" class="btn btn-primary">BUY</a>
+                </div>
+                </div>
+            </div>
+        </div><br><br>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Comming Soon</h5>
+                    <p class="card-text">Comming Soon<br>Price</p>
+                    <a href="#" class="btn btn-primary">BUY</a>
+                </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Comming Soon</h5>
+                    <p class="card-text">Comming Soon<br>Price</p>
+                    <a href="#" class="btn btn-primary">BUY</a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="licenses_section">
+        <div class="scroll-container">
+            <div class="list">
+                <% Lices.forEach(function(data) { %>
+                    <div class="list-item">
+                        <div class="position">
+                            Code:
+                            <a style="color: red;">
+                                <%- data['token']%>
+                            </a>
+                            Programm:
+                            <a style="color: red;">
+                                <%- data['program']%>
+                            </a>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
