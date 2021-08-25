@@ -4,7 +4,7 @@ const accs = new mongoose.Schema({
     data: {
         type: String,
     },
-    accnumber: {
+    for: {
         type: String,
     }
 });

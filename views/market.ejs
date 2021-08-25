@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/assets/img/logo.png">
-    <title>Admin</title>
+    <title>Marketplace</title>
     <meta name="google-site-verification" content="cVhq9ZfHrhmrGg9b98xy7u8mVKhpRCEd7H4EGivGIQU" />
     <meta name="keywords" content="Twitch, Bots, Follower, Follow Bots, Exploit, Shop, Views, View Bot, TikTok, Anime Generator, Hentai Generator"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -105,7 +105,7 @@
                     <h5 class="card-title">Universial License</h5>
                     <p class="card-text">
                         Useable on all our Programms<br>
-                        Price: 50P
+                        Price: 10P
                     </p>
                     <form action="/api/buy_uni_license" method="POST">
                         <button type="submit" class="btn btn-primary">BUY</button>
@@ -116,9 +116,11 @@
             <div class="col-sm-6">
                 <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Comming Soon</h5>
-                    <p class="card-text">Comming Soon<br>Price</p>
-                    <a href="#" class="btn btn-primary">BUY</a>
+                    <h5 class="card-title">Invite Key</h5>
+                    <p class="card-text">Send this to someone who have to register on Exploit<br>Price: 300P</p>
+                    <form action="/api/buy_invite" method="POST">
+                        <button type="submit" class="btn btn-primary">BUY</button>
+                    </form>
                 </div>
                 </div>
             </div>
@@ -154,9 +156,23 @@
                             <a style="color: red;">
                                 <%- data['token']%>
                             </a>
-                            Programm:
+                            Type:
                             <a style="color: red;">
                                 <%- data['program']%>
+                            </a>
+                        </div>
+                    </div>
+                <% }) %>
+                <% Invs.forEach(function(data) { %>
+                    <div class="list-item">
+                        <div class="position">
+                            Code:
+                            <a style="color: red;">
+                                <%- data['code']%>
+                            </a>
+                            Type:
+                            <a style="color: red;">
+                                Invite
                             </a>
                         </div>
                     </div>

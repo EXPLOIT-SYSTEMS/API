@@ -42,10 +42,13 @@ router.get('/dashboard', ensureAuthenticated, async(req, res) => {
 
 router.get('/market', ensureAuthenticated, async(req, res) => {
     const rquser = req.user
-    lic.find({user: rquser.email}, function(err, lices) {
-        res.render('market', {
-            User: req.user,
-            Lices: lices
+    inv.find({email: rquser.email}, function(err, invs) {
+        lic.find({user: rquser.email}, function(err, lices) {
+            res.render('market', {
+                User: req.user,
+                Lices: lices,
+                Invs: invs
+            })
         })
     })
 })

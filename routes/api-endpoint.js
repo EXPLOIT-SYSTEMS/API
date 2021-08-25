@@ -43,6 +43,12 @@ router.post('/auth', urlencodedParser, async(req, res) => {
         })
 })
 
+router.post('/use_license', urlencodedParser, async(req, res) => {
+    await Licenses.findOneAndDelete({ token: req.body.token }).then(key => {
+        res.json({data: "bfg43r89sdfhbgesjki34r65"})
+    })
+})
+
 router.post('/skid', urlencodedParser, async(req, res) => {
     const skid = req.body
     const newValue = true
@@ -57,25 +63,21 @@ router.post('/skid', urlencodedParser, async(req, res) => {
 router.post('/add_invitekey_admin', urlencodedParser, async(req, res) => {
     const rquser = req.user;
     const key = uuidv4();
-        //InviteKeys.findOne({ email: rquser.email }).then(user => {
-            //if (user) { res.json({ message: "You already have a Invite key!" }); } else {
-                if (rquser.rank == "Admin") {
-                    const newKey = InviteKeys({
-                        code: key,
-                        by: rquser.username,
-                        email: rquser.email
-                    })
-                    newKey.save()
-                    res.redirect('/admin')
-                }
-            //}
+    if (rquser.rank == "Admin") {
+        const newKey = InviteKeys({
+            code: key,
+            by: rquser.username,
+            email: rquser.email
         })
-//})
+        newKey.save()
+        res.redirect('/admin')
+    }
+})
 
 router.post('/buy_uni_license', urlencodedParser, async(req, res) => {
     const rquser = req.user
     const currentPoints = req.user.points
-    const newPoints = currentPoints - 50
+    const newPoints = currentPoints - 10
     await User.findOneAndUpdate(
         { email: rquser.email },
         { points: newPoints }
@@ -88,6 +90,26 @@ router.post('/buy_uni_license', urlencodedParser, async(req, res) => {
          })
          newKey.save()
          res.redirect('/market#licenses_section')
+})
+
+router.post('/buy_invite', urlencodedParser, async(req, res) => {
+    const rquser = req.user;
+    const currentPoints = req.user.points
+    const newPoints = currentPoints - 300
+    await User.findOneAndUpdate(
+        { email: rquser.email },
+        { points: newPoints }
+    )
+    const key = uuidv4();
+    if (rquser) {
+        const newKey = InviteKeys({
+            code: key,
+            by: rquser.username,
+            email: rquser.email
+        })
+        newKey.save()
+        res.redirect('/market#licenses_section')
+    }
 })
 
 router.post('/account_delete_request', urlencodedParser, async(req, res) => {
